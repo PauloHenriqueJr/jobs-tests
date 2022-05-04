@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="image-responsive">
+    <img src="/assets/logo.png" alt="Nature">
+    </div>
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="register()">
+    <div class="title">
+      <p>Crie sua conta</p>
+    </div>
+    <mat-card class="mat-elevation-z0" *ngIf="passwordHasError() || takenUserError" >
+      <mat-error>
+        <span class="errorMessage" *ngIf="signupForm.controls.password.hasError('minlength')">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>A senha deve conter ao menos 8 caracteres.</span>
+        </span>
+        <span class="errorMessage" *ngIf="signupForm.controls.password.hasError('hasNumber')">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>A senha deve conter ao menos um número.</span>
+        </span>
+        <span class="errorMessage" *ngIf="signupForm.controls.password.hasError('hasSpecialCharacter')">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>A senha deve conter ao menos um caractere especial.</span>
+        </span>
+        <span class="errorMessage" *ngIf="signupForm.controls.password.hasError('hasLetter')">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>A senha deve conter ao menos uma letra.</span>
+        </span>
+        <span class="errorMessage" *ngIf="takenUserError">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>Este usuário já existe.</span>
+        </span>
+      </mat-error>
+    </mat-card>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="nome" formControlName="name">
+      <mat-error *ngIf="signupForm.controls.name.hasError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="email@example.com" formControlName="email">
+      <mat-error *ngIf="signupForm.controls.email.hasError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.email.hasError('invalidEmail')">
+        Email inválido.
+      </mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="senha" formControlName="password">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="signupForm.controls.password.hasError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="passwordHasError()">
+        A senha não cumpre os requisitos.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirmar Senha</mat-label>
+      <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="confirmar senha" formControlName="confirmPassword">
+      <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="signupForm.get('confirmPassword').getError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.confirmPassword.errors?.passwordMismatch">
+        As senhas não são correspondentes.
+      </mat-error>
+    </mat-form-field>
+
+    <button class="signupButton"  type="submit" mat-raised-button>Registrar</button>
+
+    <div class="alreadyRegistered">
+      <p>Já possui cadastro? <strong><a  [routerLink]="'/login'">Clique aqui</a></strong></p>
+    </div>
+  </form>
+
+</div>

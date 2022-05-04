@@ -1,0 +1,122 @@
+::ng-deep .blue-snackbar{
+  background-color:rgb(0, 132, 255);
+  color: rgb(255, 255, 255);
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.mat-form-field {
+  display: flex;
+  flex-direction: column;
+  margin: -10px;
+}
+
+.title {
+  text-align: center;
+  color: #13212b;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+}
+
+.opportunity-box {
+  color: #686868;
+  padding: 15px;
+}
+
+.opportunity-border-error {
+  border: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  border-color: #f44336;
+}
+
+.opportunity-border {
+  border: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  border-color: #ececec;
+}
+
+.opportunity-box + mat-error {
+  font-size: 75%;
+  line-height: 1.125;
+  margin-top: .5416666667em;
+}
+.opportunity-title {
+  text-align: center;
+}
+
+mat-selection-list {
+  display: inline;
+}
+
+.mat-checkbox, .mat-list-option {
+  font-size: 12px;
+}
+
+.mat-list-option {
+  height: auto !important;
+  margin-top: 5px;
+  color: #686868;
+}
+
+mat-input-element {
+  caret-color: #686868;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background: rgb(0, 132, 255);
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
+  background: rgb(0, 132, 255);
+}
+
+#idButton{
+  text-align: center;
+}
+
+.submitButton {
+  margin: 1rem;
+  width: 60%;
+  justify-content: center;
+  background: rgb(0, 132, 255);
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}

@@ -1,0 +1,67 @@
+
+<button mat-flat-button class="button-new-lead" [routerLink]="'/new-lead'">Novo Lead (+)</button>
+
+<button mat-fab class="fab-button-lead" [routerLink]="'/new-lead'">
+ <mat-icon>add</mat-icon>
+</button>
+
+<div class="container">
+ <mat-card class="mat-elevation-z0 mat-card-cp">
+   <mat-card-title>Cliente em Potencial</mat-card-title>
+
+   <mat-card-content>
+     <cdk-virtual-scroll-viewport itemSize="50" class="card-scroll">
+       <div
+         cdkDropList
+         id="CP"
+         #clienteEmPotencialList="cdkDropList"
+         [cdkDropListData]="clienteEmPotencial"
+         [cdkDropListConnectedTo]="[dadosConfirmadosList]"
+         class="lead-list"
+         (cdkDropListDropped)="dropLead($event)">
+         <div class="lead-box" *ngFor="let item of clienteEmPotencial" cdkDrag>
+           {{item.name}}
+         </div>
+       </div>
+     </cdk-virtual-scroll-viewport>
+   </mat-card-content>
+ </mat-card>
+
+ <mat-card class="mat-elevation-z0 mat-card-dc">
+   <mat-card-title>Dados Confirmados</mat-card-title>
+   <mat-card-content>
+     <cdk-virtual-scroll-viewport itemSize="50" class="card-scroll">
+       <div
+         cdkDropList
+         id="DC"
+         #dadosConfirmadosList="cdkDropList"
+         [cdkDropListData]="dadosConfirmados"
+         [cdkDropListConnectedTo]="[reuniaoAgendadaList]"
+         class="lead-list"
+         (cdkDropListDropped)="dropLead($event)">
+         <div class="lead-box" *ngFor="let item of dadosConfirmados" cdkDrag>{{item.name}}</div>
+       </div>
+     </cdk-virtual-scroll-viewport>
+   </mat-card-content>
+ </mat-card>
+
+
+ <mat-card class="mat-elevation-z0 mat-card-ra">
+   <mat-card-title>Reunião Agendada</mat-card-title>
+     <mat-card-content>
+       <cdk-virtual-scroll-viewport itemSize="50" class="card-scroll">
+         <div
+           cdkDropList
+           id="RA"
+           #reuniaoAgendadaList="cdkDropList"
+           [cdkDropListData]="reuniaoAgendada"
+           class="lead-list"
+           (cdkDropListDropped)="dropLead($event)">
+           <div class="lead-box" *ngFor="let ra of reuniaoAgendada" cdkDrag>{{ra.name}}</div>
+         </div>
+     </cdk-virtual-scroll-viewport>
+   </mat-card-content>
+ </mat-card>
+
+
+</div>

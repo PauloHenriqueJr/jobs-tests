@@ -1,0 +1,69 @@
+::ng-deep body {
+  background-color: darkblue;
+}
+
+.container{
+  width: 365px;
+  margin: auto;
+}
+.image-responsive img{
+  margin-top: 5rem;
+  margin-bottom: -1rem;
+  width: 100%;
+}
+
+form {
+  width: 300px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+mat-card {
+  margin-bottom: 20px;
+  background: #ffdfe2;
+  color: #ea4849;
+  border: 1px;
+  border-style: solid;
+  border-color: #ea4849;
+}
+
+.errorMessage {
+  font-size: 12px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.errorIcon {
+  margin-right: 2px;
+}
+
+button {
+  width: 100%;
+  background: #13212b;
+  color: white;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #13212b;
+  font-weight: bold;
+}
+
+a:link, a:visited {
+  color: #13212b;
+  text-decoration: none;
+}
+
+.notRegistered {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+

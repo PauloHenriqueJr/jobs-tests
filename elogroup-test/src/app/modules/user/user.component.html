@@ -1,0 +1,61 @@
+<div class="container">
+  <form class="form" [formGroup]="userForm" (ngSubmit)="saveUser()">
+    <p class="title">Minha Conta</p>
+    <div class="nameAndEmailDiv">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="nome" formControlName="name">
+        <mat-error *ngIf="userForm.controls.name.hasError('required')">
+          Este campo é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="email@example.com" formControlName="email">
+        <mat-error *ngIf="userForm.controls.email.hasError('required')">
+          Este campo é obrigatório.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.email.hasError('invalidEmail')">
+          Email inválido.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="changePasswordDiv">
+      <p>Atualizar senha</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha atual</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="senha" formControlName="password">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="userForm.controls.password.hasError('required')">
+          Este campo é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nova Senha</mat-label>
+        <input matInput [type]="hideNewPassword ? 'password' : 'text'" placeholder="nova senha" formControlName="newPassword">
+        <mat-icon matSuffix (click)="hideNewPassword = !hideNewPassword">{{hideNewPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="userForm.get('newPassword')?.getError('required')">
+          Este campo é obrigatório.
+        </mat-error>
+        <mat-error *ngIf="newPasswordHasError()">
+          A senha não cumpre os requisitos.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirmar Senha</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="confirmar senha" formControlName="confirmPassword">
+        <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="userForm.get('confirmPassword')?.getError('required')">
+          Este campo é obrigatório.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.confirmPassword.errors?.passwordMismatch">
+          As senhas não são correspondentes.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button class="saveButton"  type="submit" mat-raised-button>Salvar</button>
+  </form>
+</div>

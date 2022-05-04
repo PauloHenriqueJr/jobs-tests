@@ -1,0 +1,36 @@
+<div class="row">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3 col-md-8 offset-md-2">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome">
+      <div
+        *ngIf="userForm.controls['nome'].errors && userForm.controls['nome'].errors['required']
+                && (userForm.controls['nome'].dirty || userForm.controls['nome'].touched)"
+        class="mat-error mat-small mt-1">Informe o nome.</div>
+      <div
+        *ngIf="userForm.controls['nome'].errors && userForm.controls['nome'].errors['maxlength']
+                && (userForm.controls['nome'].dirty || userForm.controls['nome'].touched)"
+        class="mat-error mat-small mt-1">O nome pode ter no máximo 40 caracteres.</div>
+    </div>
+    <div class="mb-3 col-md-8 offset-md-2">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="text" class="form-control" id="telefone" formControlName="telefone" mask="(00) 00000 - 0000">
+      <div
+        *ngIf="userForm.controls['telefone'].errors && userForm.controls['telefone'].errors['required']
+                && (userForm.controls['telefone'].dirty || userForm.controls['telefone'].touched)"
+        class="mat-error mat-small mt-1">Informe o telefone.</div>
+      <div
+        *ngIf="userForm.controls['telefone'].errors && userForm.controls['telefone'].errors['maxlength']
+                && (userForm.controls['telefone'].dirty || userForm.controls['telefone'].touched)"
+        class="mat-error mat-small mt-1">O telefone pode ter no máximo 16 caracteres.</div>
+    </div>
+    <div class="mb-3 row col-md-8 offset-md-2">
+      <div class="col-auto">
+        <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Salvar</button>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-danger" (click)="onClean()">Limpar</button>
+      </div>
+    </div>
+  </form>
+</div>

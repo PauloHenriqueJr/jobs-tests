@@ -1,0 +1,61 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+
+
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mat-form-field {
+  display: inline;
+}
+.title {
+  text-align: center;
+  color: #13212b;
+}
+
+
+
+.saveButton {
+  width: 100%;
+  background: #13212b;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    width: 300px;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    height: 80%;
+    width: 50%;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+  .form {
+    width: 250px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}

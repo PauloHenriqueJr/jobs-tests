@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="container mt-4 mb-3">
+      <h1 class="text-center">Prova Front-End - Fiscon</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container mt-3">
+      <h2 class="text-center">Cadastro de Usuários</h2>
+      <app-user-form (newUserEvent)="onNewUser($event)"></app-user-form>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="container">
+      <h2 class="text-center">Lista de Usuários</h2>
+      <app-user-table
+        [users]="users"
+        (userRemoved)="onUserRemoved($event)">
+      </app-user-table>
+    </div>
+  </div>
+</div>

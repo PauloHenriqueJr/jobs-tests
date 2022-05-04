@@ -1,0 +1,31 @@
+<div class="row col-md-8 offset-md-2">
+  <div class="row justify-content-end">
+    <div class="col-3 mb-3">
+      <input type="text" class="form-control" id="filter" placeholder="Filtro" (keyup)="onFilterUsers($event)">
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="padding-left: 8px; padding-right: 8px; margin-bottom: 2rem;">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordernar por nome"> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por telefone"> Telefone </th>
+      <td mat-cell *matCellDef="let element"> {{element.telefone | mask: '(00) 00000 - 0000'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element;">
+        <mat-icon aria-hidden="false" aria-label="Remover" (click)=" onDelete(element)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

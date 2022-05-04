@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="image-responsive">
+    <img src="/assets/logo.png" alt="Nature">
+    </div>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="title">
+      <p>Bem-Vindo</p>
+    </div>
+    <mat-card class="mat-elevation-z0" *ngIf="loginError" >
+      <mat-error>
+        <span class="errorMessage">
+          <mat-icon class="errorIcon" [inline]="true">highlight_off</mat-icon>
+          <span>Usuário ou senha incorretos.</span>
+        </span>
+      </mat-error>
+    </mat-card>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="email@example.com" formControlName="email">
+      <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls.email.hasError('invalidEmail')">
+        Email inválido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="senha" formControlName="password">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+        Este campo é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button>Login</button>
+
+    <div class="notRegistered">
+      <p>Não possui cadastro? <strong><a  [routerLink]="'/signup'">Clique aqui</a></strong></p>
+    </div>
+  </form>
+
+</div>

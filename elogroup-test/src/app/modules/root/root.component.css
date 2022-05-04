@@ -1,0 +1,52 @@
+mat-toolbar {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.button-space {
+  padding: 0 14px;
+}
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+@media screen and (min-width: 600px) {
+
+  mat-toolbar {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .small-screen-options {
+    display: none;
+  }
+
+  .image-responsive {
+    max-width: 17%;
+  }
+}
+
+@media screen and (max-width: 601px) {
+
+  mat-toolbar {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .large-screen-options {
+    display: none;
+  }
+  .image-responsive {
+    max-width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
